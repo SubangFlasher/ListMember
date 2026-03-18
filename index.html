@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSM UNLOCKING INDONESIA TEAM | Server Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #1a0b16 0%, #2d0b1e 100%);
+            --glass: rgba(255, 105, 180, 0.08);
+            --glass-border: rgba(255, 105, 180, 0.25);
+            --primary-pink: #ff4d94;
+            --secondary-pink: #ff007f;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-gradient);
+            margin: 0;
+            padding: 0;
+            color: white;
+            min-height: 100vh;
+        }
+
+        
+        nav {
+            background: rgba(255, 77, 148, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 15px 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid var(--glass-border);
+            width: 90%;
+            max-width: 500px;
+            margin: 20px auto;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 15px;
+            z-index: 1000;
+        }
+
+        .logo { 
+            font-size: 14px; 
+            font-weight: 700; 
+            letter-spacing: 1px; 
+            text-transform: uppercase;
+            text-align: center;
+            width: 100%;
+        }
+        .logo span.team { color: var(--primary-pink); }
+
+        .nav-links { 
+            display: flex; 
+            gap: 15px; 
+            margin-top: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .nav-links a { 
+            text-decoration: none; 
+            color: rgba(255, 255, 255, 0.6); 
+            font-size: 11px; 
+            transition: var(--transition);
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary-pink); }
+
+ 
+        .main-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 30px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+
+        .side-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            max-width: 450px; 
+        }
+
+        .side-slider {
+            width: 100%;
+            aspect-ratio: 16 / 9; 
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+        }
+
+        .slider-track {
+            display: flex;
+            width: 300%;
+            height: 100%;
+            animation: slideAnimation 9s infinite cubic-bezier(0.85, 0, 0.15, 1);
+        }
+
+        .slider-track img {
+            width: 33.333%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.8) contrast(1.1);
+        }
+
+        @keyframes slideAnimation {
+            0%, 30% { transform: translateX(0); }
+            33%, 63% { transform: translateX(-33.333%); }
+            66%, 96% { transform: translateX(-66.666%); }
+            100% { transform: translateX(0); }
+        }
+
+        .btn-download {
+            padding: 14px;
+            background: linear-gradient(to right, var(--secondary-pink), #bd00ff);
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            font-weight: 700;
+            font-size: 13px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+
+        .btn-download:hover { transform: translateY(-3px); opacity: 0.9; }
+
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            padding: 25px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 77, 148, 0.12);
+            border-color: var(--primary-pink);
+        }
+
+        .card h3 { color: var(--primary-pink); margin: 0; font-size: 18px; letter-spacing: 1px; }
+        .price { font-size: 28px; font-weight: 700; margin: 10px 0; }
+        .price small { font-size: 13px; opacity: 0.6; }
+
+        .features {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            font-size: 12px;
+            margin: 15px 0;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .features li { margin-bottom: 8px; }
+        .features li::before { content: " "; color: var(--primary-pink); }
+
+        .btn-order {
+            width: 100%;
+            padding: 10px;
+            background: transparent;
+            color: var(--primary-pink);
+            border: 1.5px solid var(--primary-pink);
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-order:hover {
+            background: var(--primary-pink);
+            color: white;
+        }
+
+        
+        @media (max-width: 600px) {
+            nav {
+                width: 85%;
+                padding: 12px 15px;
+            }
+            .logo { font-size: 12px; }
+            .nav-links { gap: 10px; }
+            .nav-links a { font-size: 10px; }
+            
+            .pricing-grid { grid-template-columns: 1fr; } /* Kartu jadi 1 kolom di HP */
+            .main-container { padding: 10px; }
+            .side-section { max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">GSM UNLOCKING INDONESIA <span class="team">TEAM</span></div>
+        
+    </nav>
+
+    <div class="main-container">
+        <div class="side-section">
+            <div class="side-slider">
+                <div class="slider-track">
+                    <img src="https://www.techfinitive.com/wp-content/uploads/2023/02/what-is-a-server-jpg.webp" alt="Server 1">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg-ZnJpyta8dHRBO5nolpMqy0qgtCb7uZIjzcRkUVT1G86EQ-Q4oZ9qrhbkSbHaEzcvNsoRpVAPAugcu9AoORAMvFydC9r2_w5PQtdp4Bkg5yVoOFHT_Qm4y8oarsojtg0cU3zeGlkbTX66g09YFuoYQiveb2DdzPXzYQ3ulzW1uFplsvBRzk7cqeyaoqA/s600/Desain%20tanpa%20judul_20260314_191108_0000.png" alt="Server 2">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjcxtbFuWGVqpolESCzZG7K4XC7J5toIZBocwW8oaxA_KiVuCCbNYmp99CuCBLjypROmZOmCsctdrmNJk6O2YoyxVGWB0O6x2h1gYvj0UiPPFy5xJcS_-o-Qn0XguwXRj5Jmsrf4OqvDaRn1ZFhwsdXwAQfVVSo6JtgC7fnIkmJc0G7L2q-OrR98OjCVys/s2399/Screenshot_2026-03-19-01-11-12-65_40deb401b9ffe8e1df2f1cc5ba480b12.jpg" alt="Server 3">
+                </div>
+            </div>
+            <a href="gsmunlockingindonesiateam.com" class="btn-download">Join Now</a>
+        </div>
+
+        <div class="pricing-grid">
+            <div class="card">
+                <h3>BASIC</h3>
+                <div class="price">Rp 500.000</div>
+                <ul class="features">
+                	<li>Akses Seumur Hidup</li>
+                    <li>Harga Normal</li>
+                    <li>Semua Layanan</li>
+                    <li>Dukungan Standar</li>
+                    <li>Layanan Eksklusif</li>
+                </ul>
+                <button class="btn-order" onclick="orderWA('Basic', 'Rp 500.000')">PESAN</button>
+            </div>
+
+            <div class="card">
+                <h3>RESELLER</h3>
+                <div class="price">Rp 1.500.000</div>
+                <ul class="features">
+                	<li>Akses Seumur Hidup</li>
+                    <li>Diskon Minimum</li>
+                    <li>Semua Layanan</li>
+                    <li>Dukungan Standar</li>
+                    <li>Layanan Eksklusif</li>
+                </ul>
+                <button class="btn-order" onclick="orderWA('Reseller', 'Rp 1.500.000')">PESAN</button>
+            </div>
+
+            <div class="card">
+                <h3>WHOLESALE</h3>
+                <div class="price">Rp 3.500.000</div>
+                <ul class="features">
+                    <li>Akses Seumur Hidup</li>
+                    <li>Diskon Sedang</li>
+                    <li>Semua Layanan</li>
+                    <li>Dukungan Standar</li>
+                    <li>Layanan Eksklusif</li>
+                </ul>
+                <button class="btn-order" onclick="orderWA('Wholesale', 'Rp 3.500.000')">PESAN</button>
+            </div>
+
+            <div class="card">
+                <h3>DISTRIBUTOR</h3>
+                <div class="price">Rp 5.000.000</div>
+                <ul class="features">
+                    <li>Akses Seumur Hidup</li>
+                    <li>Diskon Lebih Sedang</li>
+                    <li>Semua Layanan</li>
+                    <li>Dukungan Standar</li>
+                    <li>Layanan Eksklusif</li>
+                    <li>API Akses</li>
+                    <li>Free Website ( Landing Page )</li>
+                </ul>
+                <button class="btn-order" onclick="orderWA('Distributor', 'Rp 5.000.000')">PESAN</button>
+            </div>
+
+            <div class="card">
+                <h3>OWNER</h3>
+                <div class="price">Rp 15.000.000</div>
+                <ul class="features">
+                    <li>Akses Seumur Hidup</li>
+                    <li>Diskon Tinggi</li>
+                    <li>Semua Layanan</li>
+                    <li>Dukungan Prioritas</li>
+                    <li>Layanan Eksklusif</li>
+                    <li>API Akses</li>
+                    <li>Free Website ( Landing Page )</li>
+                    <li>Free Baju ( Gsm Unlocking)</li>
+                </ul>
+                <button class="btn-order" onclick="orderWA('Owner', 'Rp 15.000.000')">PESAN</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function orderWA(paket, harga) {
+            const nomorAdmin = "6281223742357"; 
+            const teks = `Halo Admin *GSM Unlocking Indonesia*,%0A%0A` +
+                         `Saya ingin pesan paket *${paket}* (Rp ${harga}).%0A` +
+                         `Mohon instruksinya.`;
+            window.open(`https://wa.me/${nomorAdmin}?text=${teks}`, '_blank');
+        }
+    </script>
+</body>
+</html>
