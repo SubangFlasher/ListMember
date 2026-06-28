@@ -4,262 +4,345 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GSM UNLOCKING INDONESIA TEAM | Server Edition</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-gradient: linear-gradient(135deg, #1a0b16 0%, #2d0b1e 100%);
-            --glass: rgba(255, 105, 180, 0.08);
-            --glass-border: rgba(255, 105, 180, 0.25);
+            --bg-main: #0b0713;
+            --bg-gradient: radial-gradient(circle at 50% 0%, #240b2e 0%, #0b0713 70%);
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-hover: rgba(255, 77, 148, 0.06);
+            --glass-border: rgba(255, 255, 255, 0.07);
+            --border-hover: rgba(255, 77, 148, 0.4);
             --primary-pink: #ff4d94;
-            --secondary-pink: #ff007f;
-            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --accent-purple: #bd00ff;
+            --text-main: #ffffff;
+            --text-muted: #a19fad;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background: var(--bg-gradient);
-            margin: 0;
-            padding: 0;
-            color: white;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg-main);
+            background-image: var(--bg-gradient);
+            color: var(--text-main);
             min-height: 100vh;
+            padding-bottom: 60px;
+            overflow-x: hidden;
         }
 
-        
+        /* Navbar */
         nav {
-            background: rgba(255, 77, 148, 0.05);
+            background: rgba(11, 7, 19, 0.6);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            padding: 15px 25px;
+            padding: 20px;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            border: 1px solid var(--glass-border);
-            width: 90%;
-            max-width: 500px;
-            margin: 20px auto;
-            border-radius: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border-bottom: 1px solid var(--glass-border);
             position: sticky;
-            top: 15px;
+            top: 0;
             z-index: 1000;
         }
 
         .logo { 
-            font-size: 14px; 
-            font-weight: 700; 
-            letter-spacing: 1px; 
+            font-size: 16px; 
+            font-weight: 800; 
+            letter-spacing: 2px; 
             text-transform: uppercase;
             text-align: center;
-            width: 100%;
+            background: linear-gradient(to right, #fff, var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .logo span.team { color: var(--primary-pink); }
+        .logo span.team { 
+            background: linear-gradient(to right, var(--primary-pink), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-        .nav-links { 
-            display: flex; 
-            gap: 15px; 
-            margin-top: 10px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .nav-links a { 
-            text-decoration: none; 
-            color: rgba(255, 255, 255, 0.6); 
-            font-size: 11px; 
-            transition: var(--transition);
-        }
-        .nav-links a:hover, .nav-links a.active { color: var(--primary-pink); }
-
- 
+        /* Container Utama */
         .main-container {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            gap: 30px;
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 40px;
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 0 30px;
+            align-items: start;
         }
 
-
+        /* Bagian Kiri (Slider & CTA) */
         .side-section {
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            width: 100%;
-            max-width: 450px; 
+            gap: 20px;
+            position: sticky;
+            top: 100px;
         }
 
         .side-slider {
             width: 100%;
-            aspect-ratio: 16 / 9; 
+            aspect-ratio: 4 / 3; 
             position: relative;
             overflow: hidden;
-            border-radius: 20px;
+            border-radius: 24px;
             border: 1px solid var(--glass-border);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
         .slider-track {
             display: flex;
             width: 300%;
             height: 100%;
-            animation: slideAnimation 9s infinite cubic-bezier(0.85, 0, 0.15, 1);
+            animation: slideAnimation 12s infinite cubic-bezier(0.85, 0, 0.15, 1);
         }
 
         .slider-track img {
             width: 33.333%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.8) contrast(1.1);
+            filter: brightness(0.7) contrast(1.05);
         }
 
         @keyframes slideAnimation {
-            0%, 30% { transform: translateX(0); }
-            33%, 63% { transform: translateX(-33.333%); }
-            66%, 96% { transform: translateX(-66.666%); }
+            0%, 28% { transform: translateX(0); }
+            33%, 61% { transform: translateX(-33.333%); }
+            66%, 94% { transform: translateX(-66.666%); }
             100% { transform: translateX(0); }
         }
 
         .btn-download {
-            padding: 14px;
-            background: linear-gradient(to right, var(--secondary-pink), #bd00ff);
+            padding: 16px;
+            background: linear-gradient(135deg, var(--primary-pink), var(--accent-purple));
             color: white;
             text-decoration: none;
-            border-radius: 15px;
+            border-radius: 16px;
             font-weight: 700;
-            font-size: 13px;
+            font-size: 14px;
             text-align: center;
             text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 24px rgba(255, 77, 148, 0.25);
             transition: var(--transition);
         }
 
-        .btn-download:hover { transform: translateY(-3px); opacity: 0.9; }
+        .btn-download:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 12px 30px rgba(255, 77, 148, 0.4);
+            filter: brightness(1.1);
+        }
 
-        
+        /* Bagian Kanan (Grid Harga) */
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            flex: 1;
-            min-width: 300px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
 
         .card {
             background: var(--glass);
-            backdrop-filter: blur(15px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid var(--glass-border);
-            border-radius: 25px;
-            padding: 25px;
-            text-align: center;
+            border-radius: 24px;
+            padding: 35px 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(255, 77, 148, 0.1), transparent 60%);
+            opacity: 0;
             transition: var(--transition);
         }
 
         .card:hover {
-            transform: translateY(-8px);
-            background: rgba(255, 77, 148, 0.12);
-            border-color: var(--primary-pink);
+            transform: translateY(-5px);
+            background: var(--glass-hover);
+            border-color: var(--border-hover);
+            box-shadow: 0 20px 40px rgba(255, 77, 148, 0.05);
         }
 
-        .card h3 { color: var(--primary-pink); margin: 0; font-size: 18px; letter-spacing: 1px; }
-        .price { font-size: 28px; font-weight: 700; margin: 10px 0; }
-        .price small { font-size: 13px; opacity: 0.6; }
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card h3 { 
+            color: var(--text-main); 
+            margin: 0; 
+            font-size: 14px; 
+            font-weight: 700;
+            letter-spacing: 2px; 
+            text-transform: uppercase;
+            opacity: 0.6;
+        }
+
+        /* Menonjolkan paket OWNER / Populer */
+        .card:last-child {
+            border: 1px solid rgba(255, 77, 148, 0.3);
+            background: rgba(255, 77, 148, 0.02);
+        }
+        .card:last-child h3 {
+            color: var(--primary-pink);
+            opacity: 1;
+        }
+
+        .price { 
+            font-size: 32px; 
+            font-weight: 800; 
+            margin: 15px 0 25px 0; 
+            letter-spacing: -0.5px;
+            background: linear-gradient(to right, #fff, #e2dfef);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
         .features {
             list-style: none;
             padding: 0;
             text-align: left;
-            font-size: 12px;
-            margin: 15px 0;
-            color: rgba(255, 255, 255, 0.7);
+            font-size: 13px;
+            margin-bottom: 35px;
+            color: var(--text-muted);
+            flex-grow: 1;
         }
 
-        .features li { margin-bottom: 8px; }
-        .features li::before { content: " "; color: var(--primary-pink); }
+        .features li { 
+            margin-bottom: 12px; 
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            line-height: 1.4;
+        }
+
+        /* Custom Checkmark Icon Berwarna Pink */
+        .features li::before { 
+            content: ""; 
+            display: inline-block;
+            min-width: 6px;
+            height: 6px;
+            background: var(--primary-pink);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--primary-pink);
+        }
 
         .btn-order {
             width: 100%;
-            padding: 10px;
-            background: transparent;
-            color: var(--primary-pink);
-            border: 1.5px solid var(--primary-pink);
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 12px;
+            padding: 14px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid var(--glass-border);
+            border-radius: 14px;
+            font-weight: 600;
+            font-size: 13px;
             cursor: pointer;
+            letter-spacing: 0.5px;
             transition: var(--transition);
         }
 
         .btn-order:hover {
-            background: var(--primary-pink);
-            color: white;
+            background: var(--text-main);
+            color: var(--bg-main);
+            border-color: var(--text-main);
+            box-shadow: 0 10px 20px rgba(255,255,255,0.1);
         }
 
-        
-        @media (max-width: 600px) {
-            nav {
-                width: 85%;
-                padding: 12px 15px;
+        /* Responsivitas Layanan (Responsive Design) */
+        @media (max-width: 1024px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 0 20px;
             }
-            .logo { font-size: 12px; }
-            .nav-links { gap: 10px; }
-            .nav-links a { font-size: 10px; }
-            
-            .pricing-grid { grid-template-columns: 1fr; } /* Kartu jadi 1 kolom di HP */
-            .main-container { padding: 10px; }
-            .side-section { max-width: 100%; }
+            .side-section {
+                position: relative;
+                top: 0;
+                max-width: 500px;
+                margin: 0 auto;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav { padding: 15px; }
+            .logo { font-size: 13px; }
+            .main-container { margin: 20px auto; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .card { padding: 30px 20px; }
+            .price { font-size: 28px; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">GSM UNLOCKING INDONESIA <span class="team">TEAM</span></div>
-        
-    </nav>
+<nav>
+    <div class="logo">GSM UNLOCKING INDONESIA <span class="team">TEAM</span></div>
+</nav>
 
-    <div class="main-container">
-        <div class="side-section">
-            <div class="side-slider">
-                <div class="slider-track">
-                    <img src="https://www.techfinitive.com/wp-content/uploads/2023/02/what-is-a-server-jpg.webp" alt="Server 1">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg-ZnJpyta8dHRBO5nolpMqy0qgtCb7uZIjzcRkUVT1G86EQ-Q4oZ9qrhbkSbHaEzcvNsoRpVAPAugcu9AoORAMvFydC9r2_w5PQtdp4Bkg5yVoOFHT_Qm4y8oarsojtg0cU3zeGlkbTX66g09YFuoYQiveb2DdzPXzYQ3ulzW1uFplsvBRzk7cqeyaoqA/s600/Desain%20tanpa%20judul_20260314_191108_0000.png" alt="Server 2">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjcxtbFuWGVqpolESCzZG7K4XC7J5toIZBocwW8oaxA_KiVuCCbNYmp99CuCBLjypROmZOmCsctdrmNJk6O2YoyxVGWB0O6x2h1gYvj0UiPPFy5xJcS_-o-Qn0XguwXRj5Jmsrf4OqvDaRn1ZFhwsdXwAQfVVSo6JtgC7fnIkmJc0G7L2q-OrR98OjCVys/s2399/Screenshot_2026-03-19-01-11-12-65_40deb401b9ffe8e1df2f1cc5ba480b12.jpg" alt="Server 3">
-                </div>
+<div class="main-container">
+    <div class="side-section">
+        <div class="side-slider">
+            <div class="slider-track">
+                <img src="https://www.techfinitive.com/wp-content/uploads/2023/02/what-is-a-server-jpg.webp" alt="Server 1">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg-ZnJpyta8dHRBO5nolpMqy0qgtCb7uZIjzcRkUVT1G86EQ-Q4oZ9qrhbkSbHaEzcvNsoRpVAPAugcu9AoORAMvFydC9r2_w5PQtdp4Bkg5yVoOFHT_Qm4y8oarsojtg0cU3zeGlkbTX66g09YFuoYQiveb2DdzPXzYQ3ulzW1uFplsvBRzk7cqeyaoqA/s600/Desain%20tanpa%20judul_20260314_191108_0000.png" alt="Server 2">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjcxtbFuWGVqpolESCzZG7K4XC7J5toIZBocwW8oaxA_KiVuCCbNYmp99CuCBLjypROmZOmCsctdrmNJk6O2YoyxVGWB0O6x2h1gYvj0UiPPFy5xJcS_-o-Qn0XguwXRj5Jmsrf4OqvDaRn1ZFhwsdXwAQfVVSo6JtgC7fnIkmJc0G7L2q-OrR98OjCVys/s2399/Screenshot_2026-03-19-01-11-12-65_40deb401b9ffe8e1df2f1cc5ba480b12.jpg" alt="Server 3">
             </div>
-            <a href="https://gsmunlockingindonesiateam.com" class="btn-download">Join Now</a>
         </div>
+        <a href="https://gsmunlockingindonesiateam.com" class="btn-download">Join Now</a>
+    </div>
 
-        <div class="pricing-grid">
-            <div class="card">
+    <div class="pricing-grid">
+        <div class="card">
+            <div>
                 <h3>BASIC</h3>
-                <div class="price">Rp 500.000</div>
+                <div class="price">Rp 300.000</div>
                 <ul class="features">
-                	<li>Akses Seumur Hidup</li>
+                    <li>Akses Seumur Hidup</li>
                     <li>Harga Normal</li>
                     <li>Semua Layanan</li>
                     <li>Dukungan Standar</li>
                     <li>Layanan Eksklusif</li>
                 </ul>
-                <button class="btn-order" onclick="orderWA('Basic', 'Rp 500.000')">PESAN</button>
             </div>
+            <button class="btn-order" onclick="orderWA('Basic', 'Rp 500.000')">PESAN SEKARANG</button>
+        </div>
 
-            <div class="card">
+        <div class="card">
+            <div>
                 <h3>RESELLER</h3>
-                <div class="price">Rp 1.500.000</div>
+                <div class="price">Rp 1.000.000</div>
                 <ul class="features">
-                	<li>Akses Seumur Hidup</li>
+                    <li>Akses Seumur Hidup</li>
                     <li>Diskon Minimum</li>
                     <li>Semua Layanan</li>
                     <li>Dukungan Standar</li>
                     <li>Layanan Eksklusif</li>
                 </ul>
-                <button class="btn-order" onclick="orderWA('Reseller', 'Rp 1.500.000')">PESAN</button>
             </div>
+            <button class="btn-order" onclick="orderWA('Reseller', 'Rp 1.500.000')">PESAN SEKARANG</button>
+        </div>
 
-            <div class="card">
+        <div class="card">
+            <div>
                 <h3>WHOLESALE</h3>
-                <div class="price">Rp 3.500.000</div>
+                <div class="price">Rp 2.500.000</div>
                 <ul class="features">
                     <li>Akses Seumur Hidup</li>
                     <li>Diskon Sedang</li>
@@ -267,12 +350,14 @@
                     <li>Dukungan Standar</li>
                     <li>Layanan Eksklusif</li>
                 </ul>
-                <button class="btn-order" onclick="orderWA('Wholesale', 'Rp 3.500.000')">PESAN</button>
             </div>
+            <button class="btn-order" onclick="orderWA('Wholesale', 'Rp 3.500.000')">PESAN SEKARANG</button>
+        </div>
 
-            <div class="card">
+        <div class="card">
+            <div>
                 <h3>DISTRIBUTOR</h3>
-                <div class="price">Rp 5.000.000</div>
+                <div class="price">Rp 4.500.000</div>
                 <ul class="features">
                     <li>Akses Seumur Hidup</li>
                     <li>Diskon Lebih Sedang</li>
@@ -282,12 +367,14 @@
                     <li>API Akses</li>
                     <li>Free Website ( Landing Page )</li>
                 </ul>
-                <button class="btn-order" onclick="orderWA('Distributor', 'Rp 5.000.000')">PESAN</button>
             </div>
+            <button class="btn-order" onclick="orderWA('Distributor', 'Rp 5.000.000')">PESAN SEKARANG</button>
+        </div>
 
-            <div class="card">
+        <div class="card">
+            <div>
                 <h3>OWNER</h3>
-                <div class="price">Rp 15.000.000</div>
+                <div class="price">Rp 10.000.000</div>
                 <ul class="features">
                     <li>Akses Seumur Hidup</li>
                     <li>Diskon Tinggi</li>
@@ -298,19 +385,20 @@
                     <li>Free Website ( Landing Page )</li>
                     <li>Free Baju ( Gsm Unlocking)</li>
                 </ul>
-                <button class="btn-order" onclick="orderWA('Owner', 'Rp 15.000.000')">PESAN</button>
             </div>
+            <button class="btn-order" onclick="orderWA('Owner', 'Rp 15.000.000')">PESAN SEKARANG</button>
         </div>
     </div>
+</div>
 
-    <script>
-        function orderWA(paket, harga) {
-            const nomorAdmin = "6281223742357"; 
-            const teks = `Halo Admin *GSM Unlocking Indonesia*,%0A%0A` +
-                         `Saya ingin pesan paket *${paket}* (Rp ${harga}).%0A` +
-                         `Mohon instruksinya.`;
-            window.open(`https://wa.me/${nomorAdmin}?text=${teks}`, '_blank');
-        }
-    </script>
+<script>
+    function orderWA(paket, harga) {
+        const nomorAdmin = "6281223742357"; 
+        const teks = `Halo Admin *GSM Unlocking Indonesia*,%0A%0A` +
+                     `Saya ingin pesan paket *${paket}* (${harga}).%0A` +
+                     `Mohon instruksinya.`;
+        window.open(`https://wa.me/${nomorAdmin}?text=${teks}`, '_blank');
+    }
+</script>
 </body>
 </html>
